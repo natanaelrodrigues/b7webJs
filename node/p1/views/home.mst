@@ -1,0 +1,4 @@
+{{> header}}
+<h1>Seja bem vindo</h1>
+
+<p>conteúdo do site</p>
