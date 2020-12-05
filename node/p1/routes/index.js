@@ -2,7 +2,10 @@ const express = require('express');
 
 const router = express.Router();
 router.get('/', (req,res)=>{
-    res.render('home') 
+    let obj = {
+        pageTitle:"Pagina home..."
+    }
+    res.render('home', obj) 
 });
 
 router.get('/sobre', (req,res)=>{

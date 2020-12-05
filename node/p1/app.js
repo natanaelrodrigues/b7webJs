@@ -1,11 +1,19 @@
 const express = require('express');
 const mustache = require('mustache-express');
 const router = require('./routes/index');
-
+const helpers = require('./helpers');
 
 
 // configurações
 const app = express();
+
+//criação de helpers
+app.use((req, res, next)=>{
+    res.locals.h = helpers;
+   //res.locals.titlePage = "Pagina padrão";
+    next();
+});
+
 app.use('/', router);
 
 // retorna o post em forma de objeto.
