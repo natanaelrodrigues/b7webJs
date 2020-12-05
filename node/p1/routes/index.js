@@ -1,12 +1,10 @@
 const express = require('express');
+const homeController = require('../controllers/homeController')
+const usersController = require('../controllers/userController')
 
 const router = express.Router();
-router.get('/', (req,res)=>{
-    let obj = {
-        pageTitle:"Pagina home..."
-    }
-    res.render('home', obj) 
-});
+router.get('/', homeController.index);
+router.get('/users/login',usersController.login);
 
 router.get('/sobre', (req,res)=>{
     res.send('Pagina sobre!');
