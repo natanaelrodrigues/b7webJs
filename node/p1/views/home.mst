@@ -3,4 +3,8 @@
 
 <p>conteúdo do site</p>
 
-<p>Usuario Logado: {{userInfo.name}} </p>
+{{#posts}}
+    <H3>{{title}}</H3>
+    <p>{{body}}</p>
+    <hr/>
+{{/posts}}
