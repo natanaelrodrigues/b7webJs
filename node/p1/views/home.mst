@@ -1,11 +1,12 @@
 {{> header}}
 <h1>{{titlePage}}</h1>
 
-<p>conteúdo do site</p>
 
 {{#posts}}
-    <H3><a href="/post/{{slug}}">{{title}}</a></H3>
-    <p>{{body}}</p>
-    <a href="/post/{{slug}}/edit">[ Editar ]</a>
-    <hr/>
+    <div class="post">
+        <H3><a href="/post/{{slug}}">{{title}}</a></H3>
+        <p>{{body}}</p>
+        <a href="/post/{{slug}}/edit">[ Editar ]</a>
+        <hr/>
+    </div>
 {{/posts}}
