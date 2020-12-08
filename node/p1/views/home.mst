@@ -4,7 +4,8 @@
 <p>conteúdo do site</p>
 
 {{#posts}}
-    <H3>{{title}}</H3>
+    <H3><a href="/post/{{slug}}">{{title}}</a></H3>
     <p>{{body}}</p>
+    <a href="/post/{{slug}}/edit">[ Editar ]</a>
     <hr/>
 {{/posts}}
