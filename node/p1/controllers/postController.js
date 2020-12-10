@@ -57,7 +57,7 @@ exports.edit = async (req, res) => {
 
 exports.editAction = async (req, res) => {
     // recria o slug
-    req.body.slug = require('slug')(req.body.title,{lower:true});
+    //req.body.slug = require('slug')(req.body.title,{lower:true});
     // tratamento das tags.
     req.body.tags = req.body.tags.split(',').map(t=>t.trim()); // quebra em array e tira os espaços.
 
