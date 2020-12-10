@@ -32,6 +32,21 @@ exports.addAction = async (req, res) =>{
     res.redirect('/');
 };
 
+exports.delete = async(req, res) => {
+    let deletePost = req.params.slug;
+    
+    try {
+        await Post.findOneAndDelete({slug: deletePost});
+    }catch(error) {
+        req.flash('error', 'Erro ao excluir o post, tente novamente!');
+        res.redirect('/post'+ req.params.slug + '/delete');
+    }
+    req.flash('success', 'Sucesso ao excluir o post');
+    res.redirect('/');
+    
+}
+
+
 exports.edit = async (req, res) => {
     // busca as informações
     const post = await Post.findOne({ slug: req.params.slug });

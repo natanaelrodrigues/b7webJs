@@ -15,8 +15,13 @@ router.post('/post/add',
             imageMiddleware.resize,
             postController.addAction);
 
+router.get('/post/:slug/delete', 
+            postController.delete);
 router.get('/post/:slug/edit',postController.edit)
-router.post('/post/:slug/edit',postController.editAction)
+router.post('/post/:slug/edit',
+            imageMiddleware.upload, 
+            imageMiddleware.resize,
+            postController.editAction)
 
 router.get('/post/:slug', postController.view);
 

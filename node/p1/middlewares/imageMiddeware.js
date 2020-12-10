@@ -6,11 +6,11 @@ const { v4: uuidv4 } = require('uuid');
 const multerOptions = {
     storage:multer.memoryStorage(),
     fileFilter:(req, file, next)=>{
-        const allowed = ['image/jpeg','image/jpg','impage/png'];
+        const allowed = ['image/jpeg','image/jpg','image/png'];
         if(allowed.includes(file.mimetype)){
             next(null, true);
         } else{
-            next({message: 'Arquivo não suportado'}, false);
+            next({message:'Formato do arquivo não permitido'}, false)
         }
     }
 }
