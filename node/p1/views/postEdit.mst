@@ -6,6 +6,9 @@
     <label>
         Imagem:
         <input type="file" name="photo"/>
+        {{#post.photo}}
+        <img src="/media/{{post.photo}}" with="200" />
+        {{/post.photo}}
     </label>
     <br/>
     <label>
