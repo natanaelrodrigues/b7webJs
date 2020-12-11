@@ -21,7 +21,8 @@ const postSchema = new mongoose.Schema({
 
 postSchema.pre('save', function(next){
     if (this.isModified('title')) { // quando mudar de branco para o conteúdo.
-        this.slug = slug( this.title, {lower:true} );
+        let newSlug = this.title + '-'+ String(Math.floor(Math.random() * 200));
+        this.slug = slug( newSlug, {lower:true} );
     }
 
     next();

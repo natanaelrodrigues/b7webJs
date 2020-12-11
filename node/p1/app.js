@@ -10,10 +10,8 @@ const flash = require('express-flash');
 const errorHendler = require('./handlers/errorHandler');
 
 
-
 // configurações
 const app = express();
-
 
 
 // retorna o post em forma de objeto.
@@ -27,7 +25,7 @@ app.use(cookieParser(process.env.SECRET));
 app.use(session({
     secret:process.env.SECRET,
     resave:false,
-    saveUnitialized:false
+    saveUninitialized:false
 }));
 
 app.use(flash());
