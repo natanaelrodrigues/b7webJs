@@ -7,7 +7,13 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('express-flash');
 
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy;
+
+
 const errorHendler = require('./handlers/errorHandler');
+const { autocrop } = require('jimp');
+const { appendConstructorOption } = require('jimp');
 
 
 // configurações
@@ -30,6 +36,8 @@ app.use(session({
 
 app.use(flash());
 
+
+
 //criação de helpers
 app.use((req, res, next)=>{
     res.locals.h = helpers;
@@ -37,6 +45,13 @@ app.use((req, res, next)=>{
     next();
 });
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+const User = require('./models/User');
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser);
 
 
 app.use('/', router);
