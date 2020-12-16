@@ -5,21 +5,23 @@ exports.login = (req, res) =>{
 }
 
 exports.loginAction = (req, res) => {
-
+    
     const auth = User.authenticate();
-
+    
     auth(req.body.email, 
          req.body.password,
          (error, result) => {
             if(!result) {
-                req.flash('error','Seu e-mail e/ou senha estão incorretos');
+                req.flash('errors','Seu e-mail e/ou senha estão incorretos');
                 res.redirect('/users/login');
                 return;
             }
-
+           
+            req.login(result, ()=>{});
+            console.log('logou');
             req.flash('success','Você está logado com sucesso.');
             res.redirect('/');
-         });
+        });
 
 };
 
