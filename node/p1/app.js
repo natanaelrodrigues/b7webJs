@@ -35,7 +35,8 @@ app.use(session({
 
 app.use(flash());
 
-
+app.use(passport.initialize());
+app.use(passport.session());
 
 //criação de helpers
 app.use((req, res, next)=>{
@@ -44,8 +45,7 @@ app.use((req, res, next)=>{
     next();
 });
 
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 const User = require('./models/User');
 passport.use(new localStrategy(User.authenticate()));

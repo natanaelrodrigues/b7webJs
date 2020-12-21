@@ -12,4 +12,4 @@ const userSchema = new mongoose.Schema({
 userSchema.plugin(passportLocaMongoose, { usernameField:'email' });
 
 
-module.exports=mongoose.model('user', userSchema);
+module.exports=mongoose.model('User', userSchema);
