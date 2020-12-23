@@ -8,17 +8,14 @@ exports.loginAction = (req, res) => {
     
     const auth = User.authenticate();
     
-    auth(req.body.email, 
-         req.body.password,
-         (error, result) => {
+    auth(req.body.email, req.body.password, (error, result) => {
             if(!result) {
-                req.flash('errors','Seu e-mail e/ou senha estão incorretos');
+                req.flash('error','Seu e-mail e/ou senha estão incorretos');
                 res.redirect('/users/login');
                 return;
             }
-           
-            req.login(result, ()=>{});
-            console.log('logou');
+
+            req.login(result, ()=>{ });
             req.flash('success','Você está logado com sucesso.');
             res.redirect('/');
         });

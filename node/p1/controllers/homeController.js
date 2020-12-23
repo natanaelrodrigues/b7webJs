@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const response = require("express");
 const Post = mongoose.model('Post');
 
 
@@ -9,8 +10,6 @@ exports.index = async (req,res)=>{
         tags:[],
         tag:''
     }
-
-
 
     responseJson.tag = req.query.t;
     const postFilter = (typeof responseJson.tag != 'undefined') ? {tags: responseJson.tag}: {};
